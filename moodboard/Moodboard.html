@@ -60,6 +60,35 @@
         .radio-button.selected .ellipse-5 {
             display: block;
         }
+        /* CSS cho phần Palette & Materials */
+        .content11 {
+            transition: all 0.3s ease;
+        }
+        .content11.collapsed {
+            display: none;
+        }
+        .content10 {
+            cursor: pointer;
+        }
+        .content10 .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+        .content10.collapsed .chevron-icon {
+            transform: rotate(180deg);
+        }
+        /* CSS cho phần Style header */
+        .content2 {
+            cursor: pointer;
+        }
+        .content2 .dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+        .content2.collapsed .dropdown-icon {
+            transform: rotate(180deg);
+        }
+        .content4.collapsed {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -404,15 +433,24 @@
             divider.addEventListener('click', toggleBottomsheet);
         }
 
+        // Style section toggle
+        const styleHeader = document.querySelector('.content2');
+        const styleContent = document.querySelector('.content4');
+        
+        styleHeader.addEventListener('click', function() {
+            this.classList.toggle('collapsed');
+            styleContent.classList.toggle('collapsed');
+        });
+
         // Style selection
-        const styleHeader = document.querySelector('.style');
+        const styleText = document.querySelector('.style');
         const styleItems = document.querySelectorAll('.content9');
         const minimalistContent = document.querySelector('.content5');
         let currentStyle = 'Minimalist';
 
         function toggleStyle(styleName) {
             // Update header
-            styleHeader.textContent = `Style: ${styleName}`;
+            styleText.textContent = `Style: ${styleName}`;
             currentStyle = styleName;
 
             // Hide all style details and check icons
@@ -473,6 +511,15 @@
             if (firstRadio) {
                 firstRadio.classList.add('selected');
             }
+        });
+
+        // Toggle Palette & Materials section
+        const paletteHeader = document.querySelector('.content10');
+        const paletteContent = document.querySelector('.content11');
+        
+        paletteHeader.addEventListener('click', function() {
+            this.classList.toggle('collapsed');
+            paletteContent.classList.toggle('collapsed');
         });
     });
 </script>
