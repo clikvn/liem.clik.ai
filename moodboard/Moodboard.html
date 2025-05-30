@@ -89,6 +89,164 @@
         .content4.collapsed {
             display: none;
         }
+        /* CSS cho gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            width: 100%;
+        }
+        .color-item {
+            width: calc(25% - 6px);
+            aspect-ratio: 1;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+            overflow: hidden;
+            background: #fff;
+        }
+        .color-swatch {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: 1px solid #E4E4E7;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+        .color-code {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 4px;
+            height: 16px;
+            line-height: 16px;
+            font-family: var(--detail-font-family, "Inter-Medium", sans-serif);
+            font-size: var(--detail-font-size, 12px);
+            font-weight: var(--detail-font-weight, 500);
+            color: var(--zinc-900, #18181b);
+            text-align: center;
+            z-index: 1;
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            top:80% !important;
+                  }
+        .color-item .color-swatch[style*='#000000'] + .color-code {
+            color: #fff;
+        }
+        /* Color swatch */
+        .color-swatch,
+        .color-swatch2,
+        .color-swatch3,
+        .color-swatch4 {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            border: 1px solid #E4E4E7;
+            box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+            border-radius: 8px;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            z-index: 0;
+        }
+        .color-swatch2 {
+            background: #808080;
+        }
+        .color-swatch3 {
+            background: #F5F5DC;
+        }
+        .color-swatch4 {
+            background: #000000;
+        }
+        /* Material item */
+        .material-item {
+            width: calc(25% - 6px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: visible;
+            background: #fff;
+            gap: 0px;
+        }
+        .material-image-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .material-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+        .material-code {
+            height: 16px;
+            line-height: 16px;
+            margin-top: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: #18181B;
+            text-align: center;
+            width: 100%;
+            background: none;
+            padding: 0;
+            z-index: 2;
+            white-space: nowrap;
+        }
+        .recommended {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 16px;
+        }
+        .selectable.selected {
+            border: 2px solid transparent;
+            background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #0A7AFF, #00DFE0) border-box;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+        .material-image-wrapper.selected {
+            border: 2px solid transparent;
+            background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #0A7AFF, #00DFE0) border-box;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+        .material-image-wrapper {
+            cursor: pointer;
+        }
+        .button.disabled {
+            background: #D4D4D8 !important;
+            color: #fff !important;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 1;
+        }
+        .button:not(.disabled) {
+            background: linear-gradient(90deg, #0A7AFF 0%, #00DFE0 100%);
+            color: #fff;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        .button .bookmark-icon {
+            filter: none;
+        }
+        .button.disabled .bookmark-icon {
+            filter: grayscale(1) brightness(1.5);
+        }
     </style>
 </head>
 <body>
@@ -321,7 +479,7 @@
         <img class="icon2" src="icon1.svg" />
         <div class="section-title">Palette &amp; Materials</div>
       </div>
-      <div class="button">
+      <div class="button disabled">
         <img class="bookmark-icon" src="bookmark-icon0.svg" />
         <div class="save">Save</div>
       </div>
@@ -329,82 +487,98 @@
     </div>
     <div class="content11">
       <div class="gallery">
-        <div class="color-item">
-          <div class="color-swatch"></div>
+        <div class="color-item selectable">
+          <div class="color-swatch" style="background: #FFFFFF"></div>
           <div class="color-code">#FFFFFF</div>
         </div>
-        <div class="color-item2">
-          <div class="color-swatch2"></div>
-          <div class="color-code2">#808080</div>
+        <div class="color-item selectable">
+          <div class="color-swatch" style="background: #808080"></div>
+          <div class="color-code">#808080</div>
         </div>
-        <div class="color-item2">
-          <div class="color-swatch3"></div>
-          <div class="color-code3">#F5F5DC</div>
+        <div class="color-item selectable">
+          <div class="color-swatch" style="background: #F5F5DC"></div>
+          <div class="color-code">#F5F5DC</div>
         </div>
-        <div class="color-item2">
-          <div class="color-swatch4"></div>
-          <div class="color-code2">#000000</div>
+        <div class="color-item selectable">
+          <div class="color-swatch" style="background: #000000"></div>
+          <div class="color-code">#000000</div>
         </div>
       </div>
       <div class="content12">
         <div class="materials-label">Materials</div>
       </div>
       <div class="gallery">
-        <div class="material-item">
-          <img class="material-image" src="material-image0.png" />
-          <div class="material-code">#mcode</div>
-          <div class="recommended">
-            <div class="material-type">Panel</div>
-          </div>
-        </div>
-        <div class="material-item">
-          <img class="material-image" src="material-image1.png" />
-          <div class="recommended">
-            <div class="material-type">Paint</div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image0.png" />
+            <div class="recommended">
+              <div class="material-type">Panel</div>
+            </div>
           </div>
           <div class="material-code">#mcode</div>
         </div>
-        <div class="material-item">
-          <img class="material-image" src="material-image2.png" />
-          <div class="recommended">
-            <div class="material-type">Curtain</div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image1.png" />
+            <div class="recommended">
+              <div class="material-type">Paint</div>
+            </div>
           </div>
           <div class="material-code">#mcode</div>
         </div>
-        <div class="material-item">
-          <img class="material-image" src="material-image3.png" />
-          <div class="recommended">
-            <div class="material-type">Flooring</div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image2.png" />
+            <div class="recommended">
+              <div class="material-type">Curtain</div>
+            </div>
+          </div>
+          <div class="material-code">#mcode</div>
+        </div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image3.png" />
+            <div class="recommended">
+              <div class="material-type">Flooring</div>
+            </div>
           </div>
           <div class="material-code">#mcode</div>
         </div>
       </div>
       <div class="gallery">
-        <div class="material-item">
-          <img class="material-image" src="material-image4.png" />
-          <div class="material-code">#mcode</div>
-          <div class="recommended">
-            <div class="material-type">Panel</div>
-          </div>
-        </div>
-        <div class="material-item">
-          <img class="material-image" src="material-image5.png" />
-          <div class="recommended">
-            <div class="material-type">Paint</div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image4.png" />
+            <div class="recommended">
+              <div class="material-type">Panel</div>
+            </div>
           </div>
           <div class="material-code">#mcode</div>
         </div>
-        <div class="material-item">
-          <img class="material-image" src="material-image6.png" />
-          <div class="recommended">
-            <div class="material-type">Curtain</div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image5.png" />
+            <div class="recommended">
+              <div class="material-type">Paint</div>
+            </div>
           </div>
           <div class="material-code">#mcode</div>
         </div>
-        <div class="material-item">
-          <img class="material-image" src="material-image7.png" />
-          <div class="recommended">
-            <div class="material-type">Flooring</div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image6.png" />
+            <div class="recommended">
+              <div class="material-type">Curtain</div>
+            </div>
+          </div>
+          <div class="material-code">#mcode</div>
+        </div>
+        <div class="material-item selectable">
+          <div class="material-image-wrapper">
+            <img class="material-image" src="material-image7.png" />
+            <div class="recommended">
+              <div class="material-type">Flooring</div>
+            </div>
           </div>
           <div class="material-code">#mcode</div>
         </div>
@@ -521,6 +695,40 @@
             this.classList.toggle('collapsed');
             paletteContent.classList.toggle('collapsed');
         });
+
+        // Color gallery multi-select
+        document.querySelectorAll('.color-item.selectable').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+        });
+        // Material gallery multi-select (border only on image)
+        document.querySelectorAll('.material-image-wrapper').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('selected');
+            });
+        });
+
+        function updateSaveButtonState() {
+            const hasColor = document.querySelector('.color-item.selected');
+            const hasMaterial = document.querySelector('.material-image-wrapper.selected');
+            const saveBtn = document.querySelector('.button');
+            if (hasColor && hasMaterial) {
+                saveBtn.classList.remove('disabled');
+            } else {
+                saveBtn.classList.add('disabled');
+            }
+        }
+        // Gọi hàm này mỗi khi chọn color hoặc material
+        document.querySelectorAll('.color-item.selectable').forEach(item => {
+            item.addEventListener('click', updateSaveButtonState);
+        });
+        document.querySelectorAll('.material-image-wrapper').forEach(item => {
+            item.addEventListener('click', updateSaveButtonState);
+        });
+        // Gọi khi load trang để set đúng trạng thái ban đầu
+        updateSaveButtonState();
     });
 </script>
 </body>
