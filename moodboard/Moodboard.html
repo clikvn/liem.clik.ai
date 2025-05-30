@@ -1,3 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vars.css">
+    <style>
+        /* CSS cho trạng thái mở */
+        .content5:not(.collapsed),
+        .content9:not(.collapsed) {
+            gap: 8px !important;
+            padding: 8px 12px 8px 12px !important;
+        }
+        
+        /* CSS cho trạng thái đóng */
+        .content5.collapsed,
+        .content9.collapsed {
+            height: 42px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            gap: 0 !important;
+            margin: 0 !important;
+        }
+        .content5.collapsed .content6,
+        .content9.collapsed .content6 {
+            height: 42px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .content5.collapsed .content7,
+        .content9.collapsed .content7 {
+            height: 42px !important;
+            padding: 0 16px !important;
+            margin: 0 !important;
+        }
+        .content5.collapsed .style-name,
+        .content9.collapsed .style-name {
+            font-size: 16px !important;
+            line-height: 42px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        .content5.collapsed .style-details,
+        .content9.collapsed .style-details {
+            display: none !important;
+        }
+        .color-palette-label {
+            margin-top: 16px;
+        }
+        .radio-button {
+            cursor: pointer;
+        }
+        /* Mặc định hiển thị icon không chọn */
+        .radio-button .ellipse-5 {
+            display: none;
+        }
+        /* Khi được chọn, hiển thị icon chọn */
+        .radio-button.selected .ellipse-5 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
 <div class="moodboard">
   <div class="nav-bar-top">
     <div class="header-1280">
@@ -33,55 +98,63 @@
       <div class="content5">
         <div class="content6">
           <div class="content7">
-            <div class="title">Minimalist</div>
+            <div class="style-name">Minimalist</div>
             <img class="check-icon" src="check-icon0.svg" />
           </div>
+        </div>
+        <div class="style-details">
           <div class="description">
             The Japandi moodboard is presented, featuring a serene blend of
             Japanese minimalism with Scandinavian functionality. The color
             palette includes Oyster White, Warm Grey, Cool Grey, and Taupe.
           </div>
-        </div>
-        <div class="content8">
-          <div class="color-palette-label">Color palatte:</div>
-          <div class="list">
-            <div class="item">
-              <div class="radio-button">
-                <div class="group-6">
-                  <div class="ellipse-4"></div>
-                  <div class="ellipse-5"></div>
+          <div class="content8">
+            <div class="color-palette-label">Color palatte:</div>
+            <div class="list">
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Soft Neutrals</div>
                 </div>
-                <div class="default">Soft Neutrals</div>
+                <div class="items">
+                  <div class="ellipse-1"></div>
+                  <div class="ellipse-2"></div>
+                  <div class="ellipse-3"></div>
+                  <div class="ellipse-42"></div>
+                </div>
               </div>
-              <div class="items">
-                <div class="ellipse-1"></div>
-                <div class="ellipse-2"></div>
-                <div class="ellipse-3"></div>
-                <div class="ellipse-42"></div>
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Scadinavian Breeze</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-12"></div>
+                  <div class="ellipse-22"></div>
+                  <div class="ellipse-32"></div>
+                  <div class="ellipse-44"></div>
+                </div>
               </div>
-            </div>
-            <div class="item">
-              <div class="radio-button">
-                <div class="ellipse-43"></div>
-                <div class="default">Scadinavian Breeze</div>
-              </div>
-              <div class="items">
-                <div class="ellipse-12"></div>
-                <div class="ellipse-22"></div>
-                <div class="ellipse-32"></div>
-                <div class="ellipse-44"></div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="radio-button">
-                <div class="ellipse-43"></div>
-                <div class="default">Scadinavian Breeze 2</div>
-              </div>
-              <div class="items">
-                <div class="ellipse-13"></div>
-                <div class="ellipse-23"></div>
-                <div class="ellipse-33"></div>
-                <div class="ellipse-45"></div>
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Scadinavian Breeze 2</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-13"></div>
+                  <div class="ellipse-23"></div>
+                  <div class="ellipse-33"></div>
+                  <div class="ellipse-45"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -91,6 +164,62 @@
         <div class="content6">
           <div class="content7">
             <div class="style-name">Industrial</div>
+            <img class="check-icon" src="check-icon0.svg" style="display: none;" />
+          </div>
+        </div>
+        <div class="style-details" style="display: none;">
+          <div class="description">
+            Industrial style combines raw materials with modern elements, featuring exposed brick, metal fixtures, and a neutral color palette.
+          </div>
+          <div class="content8">
+            <div class="color-palette-label">Color palatte:</div>
+            <div class="list">
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Industrial Grays</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-1"></div>
+                  <div class="ellipse-2"></div>
+                  <div class="ellipse-3"></div>
+                  <div class="ellipse-42"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Urban Metals</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-12"></div>
+                  <div class="ellipse-22"></div>
+                  <div class="ellipse-32"></div>
+                  <div class="ellipse-44"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Concrete Tones</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-13"></div>
+                  <div class="ellipse-23"></div>
+                  <div class="ellipse-33"></div>
+                  <div class="ellipse-45"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -98,6 +227,62 @@
         <div class="content6">
           <div class="content7">
             <div class="style-name">Mid-Century Modern</div>
+            <img class="check-icon" src="check-icon0.svg" style="display: none;" />
+          </div>
+        </div>
+        <div class="style-details" style="display: none;">
+          <div class="description">
+            Mid-Century Modern style features clean lines, organic forms, and a mix of traditional and modern materials.
+          </div>
+          <div class="content8">
+            <div class="color-palette-label">Color palatte:</div>
+            <div class="list">
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Retro Colors</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-1"></div>
+                  <div class="ellipse-2"></div>
+                  <div class="ellipse-3"></div>
+                  <div class="ellipse-42"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Warm Woods</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-12"></div>
+                  <div class="ellipse-22"></div>
+                  <div class="ellipse-32"></div>
+                  <div class="ellipse-44"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="radio-button">
+                  <div class="group-6">
+                    <div class="ellipse-4"></div>
+                    <div class="ellipse-5"></div>
+                  </div>
+                  <div class="default">Earthy Tones</div>
+                </div>
+                <div class="items">
+                  <div class="ellipse-13"></div>
+                  <div class="ellipse-23"></div>
+                  <div class="ellipse-33"></div>
+                  <div class="ellipse-45"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -198,3 +383,98 @@
     </div>
   </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Bottomsheet toggle
+        const divider = document.querySelector('.divider');
+        const content = document.querySelector('.content');
+        let isExpanded = false;
+
+        function toggleBottomsheet() {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                content.classList.add('expanded');
+            } else {
+                content.classList.remove('expanded');
+            }
+        }
+
+        if (divider) {
+            divider.addEventListener('click', toggleBottomsheet);
+        }
+
+        // Style selection
+        const styleHeader = document.querySelector('.style');
+        const styleItems = document.querySelectorAll('.content9');
+        const minimalistContent = document.querySelector('.content5');
+        let currentStyle = 'Minimalist';
+
+        function toggleStyle(styleName) {
+            // Update header
+            styleHeader.textContent = `Style: ${styleName}`;
+            currentStyle = styleName;
+
+            // Hide all style details and check icons
+            document.querySelectorAll('.style-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            document.querySelectorAll('.check-icon').forEach(icon => {
+                icon.style.display = 'none';
+            });
+
+            // Show selected style details and check icon
+            if (styleName === 'Minimalist') {
+                minimalistContent.classList.add('expanded');
+                minimalistContent.classList.remove('collapsed');
+                minimalistContent.querySelector('.check-icon').style.display = 'block';
+                minimalistContent.querySelector('.style-details').style.display = 'block';
+            } else {
+                minimalistContent.classList.remove('expanded');
+                minimalistContent.classList.add('collapsed');
+                minimalistContent.querySelector('.check-icon').style.display = 'none';
+                minimalistContent.querySelector('.style-details').style.display = 'none';
+                
+                const selectedStyle = Array.from(styleItems).find(item => 
+                    item.querySelector('.style-name').textContent === styleName
+                );
+                if (selectedStyle) {
+                    selectedStyle.querySelector('.style-details').style.display = 'block';
+                    selectedStyle.querySelector('.check-icon').style.display = 'block';
+                }
+            }
+        }
+
+        // Add click handlers for style items
+        styleItems.forEach(item => {
+            const styleName = item.querySelector('.style-name').textContent;
+            item.addEventListener('click', () => toggleStyle(styleName));
+        });
+
+        // Add click handler for Minimalist style
+        minimalistContent.addEventListener('click', () => toggleStyle('Minimalist'));
+
+        // Radio button selection
+        document.querySelectorAll('.radio-button').forEach(radio => {
+            radio.addEventListener('click', function() {
+                // Remove selected class from all radio buttons in the same list
+                const list = this.closest('.list');
+                list.querySelectorAll('.radio-button').forEach(r => {
+                    r.classList.remove('selected');
+                });
+                // Add selected class to clicked radio button
+                this.classList.add('selected');
+            });
+        });
+
+        // Set initial selected radio button
+        document.querySelectorAll('.list').forEach(list => {
+            const firstRadio = list.querySelector('.radio-button');
+            if (firstRadio) {
+                firstRadio.classList.add('selected');
+            }
+        });
+    });
+</script>
+</body>
+</html>
