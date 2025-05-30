@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="material">
+    <div class="nav-bar-top">
+      <div class="frame-427321113">
+        <div class="search">
+          <div class="field">
+            <img class="icon-search" src="icon-search0.svg" />
+            <input type="text" class="search2" placeholder="Search" />
+            <img class="icon-qr-code" src="icon-qr-code0.svg" id="qrButton" />
+            <div class="fillter">
+              <img class="icon-settings-2" src="icon-settings-20.svg" />
+            </div>
+          </div>
+        </div>
+        <div class="type">
+          <div class="button active" data-tab="moodboard">
+            <img class="icon-layout-template" src="icon-layout-template0.svg" />
+            <div class="text">Moodboard</div>
+          </div>
+          <div class="button2" data-tab="material">
+            <img class="icon-layers" src="icon-layers0.svg" />
+            <div class="text2">Material</div>
+          </div>
+          <div class="button2" data-tab="product">
+            <img class="icon-armchair" src="icon-armchair0.svg" />
+            <div class="text2">Product</div>
+          </div>
+          <div class="button2" data-tab="design">
+            <img class="icon-pen-tool" src="icon-pen-tool0.svg" />
+            <div class="text2">Design</div>
+          </div>
+          <div class="button2" data-tab="my-boards">
+            <img class="icon-album" src="icon-album0.svg" />
+            <div class="text2">My boards</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="item">
+          <img class="rectangle-3467533" src="rectangle-34675330.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="my-boards">My boards</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-3467534" src="rectangle-34675340.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="my-boards">My boards</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-3467532" src="rectangle-34675320.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="moodboard">Moodboard</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-34675332" src="rectangle-34675331.png" />
+          <div class="text3">
+            <div
+              class="step-into-a-chic-dining-area-adorned-with-our-exquisite-tableware-where-elegance-meets-functionality-in-every-detail"
+            >
+              Step into a chic dining area adorned with our exquisite tableware,
+              where elegance meets functionality in every detail.
+            </div>
+            <div class="moodboard">Moodboard</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-3467533" src="rectangle-34675332.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="materials">Materials</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-3467534" src="rectangle-34675341.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="materials">Materials</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-3467533" src="rectangle-34675333.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="products">Products</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="rectangle-3467534" src="rectangle-34675342.png" />
+          <div class="text3">
+            <div
+              class="explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style"
+            >
+              Explore the inviting ambiance of our latest collection, nestled
+              within a beautifully designed living room that seamlessly blends
+              comfort and style.
+            </div>
+            <div class="products">Products</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- QR Scanner Modal -->
+  <div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">
+    <div style="position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div id="qrReader" style="width: 300px; height: 300px;"></div>
+      <button id="closeQR" style="margin-top: 20px; padding: 10px 20px; background: white; border-radius: 8px; cursor: pointer;">Close</button>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.button, .button2');
+      const gallery = document.querySelector('.gallery');
+      const items = gallery.querySelectorAll('.item');
+      const searchInput = document.querySelector('.search2');
+
+      // Tab functionality
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          tabs.forEach(t => {
+            t.classList.remove('active');
+            t.classList.remove('button');
+            t.classList.add('button2');
+          });
+
+          // Add active class to clicked tab
+          this.classList.remove('button2');
+          this.classList.add('button');
+          this.classList.add('active');
+
+          // Filter items based on selected tab
+          const selectedTab = this.getAttribute('data-tab');
+          filterItems(selectedTab, searchInput.value);
+        });
+      });
+
+      // Search functionality
+      searchInput.addEventListener('input', function() {
+        const activeTab = document.querySelector('.button.active');
+        const selectedTab = activeTab ? activeTab.getAttribute('data-tab') : 'all';
+        filterItems(selectedTab, this.value);
+      });
+
+      // Combined filter function
+      function filterItems(selectedTab, searchText) {
+        items.forEach(item => {
+          const category = item.querySelector('.my-boards, .moodboard, .materials, .products').textContent.toLowerCase();
+          const title = item.querySelector('.explore-the-inviting-ambiance-of-our-latest-collection-nestled-within-a-beautifully-designed-living-room-that-seamlessly-blends-comfort-and-style, .step-into-a-chic-dining-area-adorned-with-our-exquisite-tableware-where-elegance-meets-functionality-in-every-detail').textContent.toLowerCase();
+          
+          const matchesTab = selectedTab === 'all' || category === selectedTab;
+          const matchesSearch = searchText === '' || title.includes(searchText.toLowerCase());
+          
+          item.style.display = matchesTab && matchesSearch ? 'flex' : 'none';
+        });
+      }
+
+      // QR Code Scanner
+      const qrButton = document.getElementById('qrButton');
+      const qrModal = document.getElementById('qrModal');
+      const closeQR = document.getElementById('closeQR');
+      let html5QrCode = null;
+
+      qrButton.addEventListener('click', function() {
+        qrModal.style.display = 'flex';
+        if (!html5QrCode) {
+          html5QrCode = new Html5Qrcode("qrReader");
+          html5QrCode.start(
+            { facingMode: "environment" },
+            {
+              fps: 10,
+              qrbox: { width: 250, height: 250 }
+            },
+            onScanSuccess,
+            onScanFailure
+          );
+        }
+      });
+
+      closeQR.addEventListener('click', function() {
+        qrModal.style.display = 'none';
+        if (html5QrCode) {
+          html5QrCode.stop().then(() => {
+            html5QrCode = null;
+          });
+        }
+      });
+
+      function onScanSuccess(decodedText, decodedResult) {
+        // Handle the scanned code
+        console.log(`Code scanned = ${decodedText}`);
+        searchInput.value = decodedText;
+        // Trigger search
+        const activeTab = document.querySelector('.button.active');
+        const selectedTab = activeTab ? activeTab.getAttribute('data-tab') : 'all';
+        filterItems(selectedTab, decodedText);
+        
+        // Close modal after successful scan
+        qrModal.style.display = 'none';
+        if (html5QrCode) {
+          html5QrCode.stop().then(() => {
+            html5QrCode = null;
+          });
+        }
+      }
+
+      function onScanFailure(error) {
+        // Handle scan failure
+        console.warn(`QR code scanning failed: ${error}`);
+      }
+    });
+  </script>
+</body>
+</html>

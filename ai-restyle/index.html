@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="restyle">
+    <div class="nav-bar-top">
+      <div class="header-1280">
+        <img class="back-icon" src="back-icon0.svg" />
+        <div class="ai-restyle">AI Restyle</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="image">
+        <img class="image2" src="image1.png" />
+        <div class="button">
+          <input type="file" id="first-image-upload" accept="image/*" style="display: none;">
+          <label for="first-image-upload" class="change-label">
+            <div class="change">Change</div>
+            <div class="icon-wrapper">
+              <img class="icon-image-plus" src="icon-image-plus0.svg" />
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="apply-misty-oak-ms-495-el-by-an-cuong-to">
+        Apply Misty Oak (MS 495 EL) by An Cuong to:
+      </div>
+      <div class="content2">
+        <div class="button2 dropdown">
+          <div class="kitchen-cabinet">Kitchen cabinet</div>
+          <img class="icon-chevron-down" src="icon-chevron-down0.svg" />
+          <div class="dropdown-menu">
+            <div class="dropdown-item">Kitchen cabinet</div>
+            <div class="dropdown-item">Living room cabinet</div>
+            <div class="dropdown-item">Bedroom cabinet</div>
+            <div class="dropdown-item">Bathroom cabinet</div>
+            <div class="dropdown-item">Office cabinet</div>
+          </div>
+        </div>
+        <div class="button3">
+          <input type="file" id="image-upload" accept="image/*" style="display: none;">
+          <label for="image-upload" class="upload-label">
+            <div class="continue">Upload image</div>
+          </label>
+        </div>
+      </div>
+      <div class="image">
+        <img class="image2" src="image3.png" />
+        <div class="button4">
+          <div class="analyze-image">Analyze image</div>
+          <div class="icon-wrapper">
+            <img class="clik-ai-icon" src="clik-ai-icon0.svg" />
+          </div>
+        </div>
+      </div>
+      <div class="ai">
+        <div class="ai-instruction">AI Instruction</div>
+        <div class="select-element-in-the-scene-to-apply-material">
+          Select element in the scene to apply material
+        </div>
+        <div class="list">
+          <div class="item">
+            <div class="kitchen-cabinet-door">Kitchen cabinet door</div>
+          </div>
+          <div class="item">
+            <div class="base-cabinet-door">Base cabinet door</div>
+          </div>
+          <div class="item">
+            <div class="wall-cabinet-door">Wall cabinet door</div>
+          </div>
+          <div class="item">
+            <div class="kitchen-island-cabinet">Kitchen island cabinet</div>
+          </div>
+        </div>
+        <div class="or-describe-elements">or describe elements</div>
+        <div class="button5">
+          <input type="text" class="element-description" placeholder="element description">
+        </div>
+        <div class="button6">
+          <img class="icon-refresh-ccw" src="icon-refresh-ccw0.svg" />
+          <div class="login-with-email">Restyle</div>
+        </div>
+        <div class="image3">
+          <img class="image4" src="image5.png" />
+          <div class="button7">
+            <div class="edit">Edit</div>
+            <div class="icon-wrapper">
+              <img class="clik-ai-icon2" src="clik-ai-icon1.svg" />
+            </div>
+          </div>
+          <div class="button">
+            <div class="save">Save</div>
+            <div class="icon-wrapper">
+              <img class="icon-plus-circle" src="icon-plus-circle0.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Xử lý dropdown
+      const dropdown = document.querySelector('.dropdown');
+      const dropdownItems = document.querySelectorAll('.dropdown-item');
+      const selectedText = dropdown.querySelector('.kitchen-cabinet');
+
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+      });
+
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          selectedText.textContent = this.textContent;
+          dropdown.classList.remove('active');
+        });
+      });
+
+      // Đóng dropdown khi click ra ngoài
+      document.addEventListener('click', function() {
+        dropdown.classList.remove('active');
+      });
+
+      // Xử lý upload ảnh cho nút Change
+      const firstImageUpload = document.getElementById('first-image-upload');
+      const firstPreviewImage = document.querySelectorAll('.image2')[0];
+
+      firstImageUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          // Kiểm tra xem file có phải là ảnh không
+          if (!file.type.startsWith('image/')) {
+            alert('Please select an image file');
+            return;
+          }
+
+          // Kiểm tra kích thước file (giới hạn 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            alert('File size should be less than 5MB');
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            firstPreviewImage.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Xử lý upload ảnh cho nút Upload image
+      const imageUpload = document.getElementById('image-upload');
+      const previewImage = document.querySelectorAll('.image2')[1];
+
+      imageUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          // Kiểm tra xem file có phải là ảnh không
+          if (!file.type.startsWith('image/')) {
+            alert('Please select an image file');
+            return;
+          }
+
+          // Kiểm tra kích thước file (giới hạn 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            alert('File size should be less than 5MB');
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            previewImage.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Xử lý items
+      const items = document.querySelectorAll('.item');
+      
+      items.forEach(item => {
+        item.addEventListener('click', function() {
+          this.classList.toggle('selected');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
