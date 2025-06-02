@@ -41,7 +41,9 @@
   <div class="restyle">
     <div class="nav-bar-top">
       <div class="header-1280">
-        <img class="back-icon" src="back-icon0.svg" />
+        <a href="../moodboard/moodboard.html" class="back-icon-link">
+          <img class="back-icon" src="back-icon0.svg" />
+        </a>
         <div class="ai-restyle">AI Restyle</div>
       </div>
     </div>
@@ -137,6 +139,13 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Handle back button
+      const backButton = document.querySelector('.back-icon-link');
+      backButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = '../moodboard/moodboard.html';
+      });
+
       // Xử lý dropdown
       const dropdown = document.querySelector('.dropdown');
       const dropdownItems = document.querySelectorAll('.dropdown-item');
