@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Bottomsheet</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .moodboard {
+            height: 100vh;
+            position: relative;
+            background: #f0f0f0;
+        }
+
+        .nav-bar-top {
+            height: 48px;
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .image {
+            height: 293px;
+            background: #ddd;
+            position: fixed;
+            top: 48px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .content {
+            background: white;
+            border-radius: 16px 16px 0 0;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 325px;
+            height: calc(100vh - 325px);
+            transition: all 0.3s ease-in-out;
+            z-index: 3;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+
+        .content.expanded {
+            top: 52px !important;
+            height: calc(100vh - 52px) !important;
+        }
+
+        .divider {
+            padding: 8px 0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 32px;
+            height: 4px;
+            background: #d3d3d3;
+            margin: 0 auto;
+            border-radius: 2px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .content.expanded .progress-bar {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="moodboard">
+        <div class="nav-bar-top">Nav Bar</div>
+        <div class="image">Image</div>
+        <div class="content">
+            <div class="divider">
+                <div class="progress-bar"></div>
+            </div>
+            <div style="padding: 20px;">
+                <h2>Bottomsheet Content</h2>
+                <p>Click the bar above to expand/collapse</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Script started');
+            
+            const divider = document.querySelector('.divider');
+            const content = document.querySelector('.content');
+            
+            console.log('Divider:', divider);
+            console.log('Content:', content);
+            
+            let isExpanded = false;
+
+            function toggleBottomsheet() {
+                console.log('Toggle clicked');
+                isExpanded = !isExpanded;
+                if (isExpanded) {
+                    content.classList.add('expanded');
+                    console.log('Added expanded class');
+                } else {
+                    content.classList.remove('expanded');
+                    console.log('Removed expanded class');
+                }
+            }
+
+            if (divider) {
+                divider.addEventListener('click', toggleBottomsheet);
+                console.log('Click listener added');
+            } else {
+                console.error('Divider not found');
+            }
+        });
+    </script>
+</body>
+</html> 
