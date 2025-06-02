@@ -6,6 +6,7 @@
     <title>Moodboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="vars.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* CSS cho trạng thái mở */
         .content5:not(.collapsed),
@@ -205,13 +206,39 @@
         }
         .recommended {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2px 8px;
-            border-radius: 4px;
+            width: 59px;
+            height: 16px;
+            right: 4px;
+            top: 4px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px 8px;
+            gap: 4px;
+            background: linear-gradient(0deg, rgba(87, 87, 87, 0.04), rgba(87, 87, 87, 0.04)), rgba(255, 255, 255, 0.55);
+            background-blend-mode: color-dodge, lighten;
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            z-index: 1;
+        }
+        .material-type {
+            width: 43px;
+            height: 16px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-style: normal;
+            font-weight: 500;
             font-size: 12px;
             line-height: 16px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #71717A;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
         }
         .selectable.selected {
             border: 2px solid transparent;
@@ -246,6 +273,22 @@
         }
         .button.disabled .bookmark-icon {
             filter: grayscale(1) brightness(1.5);
+        }
+        /* CSS cho divider */
+        .divider {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #fff;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        .progress-bar {
+            width: 32px;
+            height: 4px;
+            background: #E4E4E7;
+            border-radius: 2px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -666,7 +709,7 @@
         // Add click handler for Minimalist style
         minimalistContent.addEventListener('click', () => toggleStyle('Minimalist'));
 
-        // Radio button selection
+        // Style selection
         document.querySelectorAll('.radio-button').forEach(radio => {
             radio.addEventListener('click', function() {
                 // Remove selected class from all radio buttons in the same list
@@ -676,15 +719,39 @@
                 });
                 // Add selected class to clicked radio button
                 this.classList.add('selected');
-            });
-        });
 
-        // Set initial selected radio button
-        document.querySelectorAll('.list').forEach(list => {
-            const firstRadio = list.querySelector('.radio-button');
-            if (firstRadio) {
-                firstRadio.classList.add('selected');
-            }
+                // Get colors from the color circles next to this radio button
+                const colorCircles = this.closest('.item').querySelectorAll('.items > div');
+                const colorItems = document.querySelectorAll('.color-item.selectable');
+
+                // Apply colors to color gallery without selecting them
+                colorCircles.forEach((circle, index) => {
+                    if (index < colorItems.length) {
+                        const color = window.getComputedStyle(circle).backgroundColor;
+                        const colorSwatch = colorItems[index].querySelector('.color-swatch');
+                        const colorCode = colorItems[index].querySelector('.color-code');
+                        
+                        // Apply color to swatch
+                        colorSwatch.style.backgroundColor = color;
+                        
+                        // Convert RGB to HEX and update color code
+                        const rgb = color.match(/\d+/g);
+                        if (rgb) {
+                            const hex = '#' + rgb.map(x => {
+                                const hex = parseInt(x).toString(16);
+                                return hex.length === 1 ? '0' + hex : hex;
+                            }).join('').toUpperCase();
+                            colorCode.textContent = hex;
+                        }
+                        
+                        // Remove selected class if it exists
+                        colorItems[index].classList.remove('selected');
+                    }
+                });
+
+                // Update save button state
+                updateSaveButtonState();
+            });
         });
 
         // Toggle Palette & Materials section
@@ -729,6 +796,35 @@
         });
         // Gọi khi load trang để set đúng trạng thái ban đầu
         updateSaveButtonState();
+
+        // Style selection
+        document.querySelectorAll('.style-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                document.querySelectorAll('.style-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                // Add selected class to clicked option
+                this.classList.add('selected');
+
+                // Get colors from the selected style's color circles
+                const colorCircles = this.querySelectorAll('.color-circle');
+                const colorGallery = document.querySelector('.color-gallery');
+                const colorItems = colorGallery.querySelectorAll('.color-item.selectable');
+
+                // Apply colors to color gallery and select corresponding items
+                colorCircles.forEach((circle, index) => {
+                    if (index < colorItems.length) {
+                        const color = circle.style.backgroundColor;
+                        colorItems[index].style.backgroundColor = color;
+                        colorItems[index].classList.add('selected');
+                    }
+                });
+
+                // Update save button state
+                updateSaveButtonState();
+            });
+        });
     });
 </script>
 </body>
