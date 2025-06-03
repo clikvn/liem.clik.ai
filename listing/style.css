@@ -9,18 +9,20 @@
   overflow-y: auto;
 }
 .nav-bar-top {
-  padding: 0px 16px 0px 16px;
+  padding: 0px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   background: var(--zinc-50, #fafafa);
-  z-index: 10;
-  padding-bottom: 16px;
+  z-index: 100;
+  padding-bottom: 0px;
 }
 .frame-427321113 {
   padding: 12px 0px 12px 0px;
@@ -32,6 +34,7 @@
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  background: var(--zinc-50, #fafafa);
 }
 .search {
   display: flex;
@@ -208,6 +211,8 @@
   overflow: visible;
 }
 .gallery {
+  margin-top: 128px;
+  padding: 0 16px;
   display: flex;
   flex-direction: row;
   gap: 12px;
@@ -230,6 +235,7 @@
   width: calc(50% - 6px);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .item img {
   width: 100%;
